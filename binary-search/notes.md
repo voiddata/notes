@@ -34,6 +34,6 @@ int binarySearch(int target, int[] arr) {
 
 **Output :**  
 - position of target if present  
-- $-1$ if target not present
+- -1 if target not present
 
 
