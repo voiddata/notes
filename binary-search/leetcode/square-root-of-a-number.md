@@ -70,5 +70,5 @@ public int mySqrt(int x) {
 }
 ```
 
-The above approach is somewhat faster than the above approaches because we update `low` and `high` by 1.  
+The above approach is somewhat faster than the approaches 1 and 2 because we update `low` and `high` by 1.  
 But infinite loops are not recommended.
