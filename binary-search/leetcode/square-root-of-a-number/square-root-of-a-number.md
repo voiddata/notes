@@ -56,7 +56,7 @@ public int mySqrt(int x) {
     double high = x;
 
     while(true) {
-        double mid = (low + ((high - low) / 2));
+        double mid = (low + high) / 2;
         long sqr = (long) (mid * mid);
 
         if((int) sqr == x) {
