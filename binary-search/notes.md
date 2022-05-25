@@ -66,3 +66,7 @@ The above function is used to find the first `T` based on the `property` functio
 
 **Output :**  
 - position of boundary if present
+
+
+## References:
+[Binary Search - Kunal Kushwaha](https://www.youtube.com/watch?v=W9QJ8HaRvJQ)
