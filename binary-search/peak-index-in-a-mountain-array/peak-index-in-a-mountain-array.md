@@ -21,3 +21,34 @@ public int peakIndexInMountainArray(int[] arr) {
     return low;   
 }
 ```
+
+## Approach 2:
+
+The below approach uses java functional interface `BiFunction<T, U, R>`.
+
+```java
+public int peakIndexInMountainArray(int[] arr) {    
+    BiFunction<List<Integer>, Integer, Boolean> func = (a, x) -> a.get(x) < a.get(x+1);
+    return search(arr, func);
+}
+
+private static int search(int[] arr, BiFunction<List<Integer>, Integer, Boolean> func) {
+    int low = 0;
+    int high = arr.length-1;
+    
+    List<Integer> list = Arrays.stream(arr)
+                            .boxed()
+                            .collect(Collectors.toList());
+    
+    while(low <= high) {
+        int mid = (low+high)/2;
+        
+        if(func.apply(list, mid)) {
+            low = mid+1;
+        } else {
+            high = mid-1;
+        }
+    }
+    return low;
+}
+```
