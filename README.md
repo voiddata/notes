@@ -1,2 +1,2 @@
-# dsa
-data structures and algorithms package
+# notes
+notes
