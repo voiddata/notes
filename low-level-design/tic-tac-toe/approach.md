@@ -3,13 +3,10 @@
 
 ![basic approach](./designs/tic-tac-toe-lld-basic.svg)
 
-the above approach is not extensible and wrong
-since the board just contains list of players and no information about the pieces
+minimizing the players to only two
 
 ## Updated approach
 
-![updated approach](./designs/tic-tac-toe-update-1.svg)
+in this approach number of players is assumed to be 2. hence there is no need for a separate enum or class for piece.
 
-this approach is extensible as it can support board of different sizes and players of different pieces
-
-this in turn allows to have more players
+![updated approach 1](./designs/tic-tac-toe-lld-update1.svg)
