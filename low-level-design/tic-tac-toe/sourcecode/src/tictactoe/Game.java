@@ -2,11 +2,24 @@ package tictactoe;
 
 import java.util.Scanner;
 
+import tictactoe.strategy.SharedContext;
+import tictactoe.strategy.mark.BasicMarkStrategy;
+import tictactoe.strategy.mark.OptimalMarkStrategy;
+import tictactoe.strategy.win.BasicWinStrategy;
+import tictactoe.strategy.win.OptimalWinStrategy;
+
 public class Game {
 	private Board board;
 	
 	public Game(int boardSize) {
-		this.board = new Board(boardSize);
+		
+		// basic approach
+		this.board = new Board(boardSize, new BasicWinStrategy(), new BasicMarkStrategy());
+		
+		// optimal approach
+//		SharedContext sharedContext = new SharedContext(boardSize);		
+//		this.board = new Board(boardSize, new OptimalWinStrategy(sharedContext), 
+//				new OptimalMarkStrategy(sharedContext));
 	}
 	
 	public static void main(String[] args) {

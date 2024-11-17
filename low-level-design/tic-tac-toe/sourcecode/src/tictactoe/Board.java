@@ -2,25 +2,24 @@ package tictactoe;
 
 import java.util.Arrays;
 
+import tictactoe.strategy.mark.MarkStrategy;
+import tictactoe.strategy.win.WinStrategy;
+
 public class Board {
 	private int size;
 	private int[][] board;
 	private int filledSpaces;
 	
-	private int[] rowCount;
-	private int[] colCount;
-	private int diagonal;
-	private int antiDiagonal;
+	private WinStrategy winStrategy;
+	private MarkStrategy markStrategy;
 	
-	public Board(int size) {
+	public Board(int size, WinStrategy winStrategy, MarkStrategy markStrategy) {
 		this.size = size;
 		board = new int[this.size][this.size];
 		this.filledSpaces = 0;
 		
-		this.colCount = new int[this.size];
-		this.rowCount = new int[this.size];
-		this.diagonal = 0;
-		this.antiDiagonal = 0;
+		this.winStrategy = winStrategy;
+		this.markStrategy = markStrategy;
 	}
 	
 	public int getSize() {
@@ -36,8 +35,16 @@ public class Board {
 		return this.board;
 	}
 	
+	public void setWinStrategy(WinStrategy winStrategy) {
+		this.winStrategy = winStrategy;
+	}
+	
+	public void setMarkStrategy(MarkStrategy markStrategy) {
+		this.markStrategy = markStrategy;
+	}
+	
 	public boolean validRowOrColumn(int row, boolean flag) {
-		if (row == 1 || row == 2 || row == 3)
+		if (row > 0 && row <= size)
 			return true;
 		else {
 			String colOrRow = flag == true ? "row" : "column";
@@ -47,25 +54,9 @@ public class Board {
 	}
 	
 	public boolean setPiece(int row, int col, int playerNumber) {
-		if (board[row][col] != 0) {
-			System.out.println("not a valid position. choose position again");
-			return false;
-		} else {
-			if (playerNumber == 1) {
-				rowCount[row]++;
-				colCount[col]++;
-				if (row == col) diagonal++;
-				if (row + col == this.size) antiDiagonal++;
-			} else {
-				rowCount[row]--;
-				colCount[col]--;
-				if (row == col) diagonal--;
-				if (row + col == this.size) antiDiagonal--;
-			}
-			board[row][col] = playerNumber;
-			filledSpaces++;
-			return true;
-		}
+		boolean marked = markStrategy.setPiece(this, row, col, playerNumber);
+		filledSpaces = marked == true ? filledSpaces + 1 : filledSpaces;
+		return marked;
 	}
 	
 	public void print() {
@@ -76,9 +67,6 @@ public class Board {
 	}
 	
 	public boolean validate(int row, int col) {
-		return rowCount[row] == this.size || rowCount[row] == -this.size 
-				|| colCount[col] == this.size || colCount[col] == -this.size 
-				|| diagonal == this.size || diagonal == -this.size
-				|| antiDiagonal == this.size || antiDiagonal == -this.size;
+		return winStrategy.validate(this, row, col);
 	}
 }
