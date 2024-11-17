@@ -38,7 +38,9 @@ public class Game {
 				
 			} while (!board.setPiece(row - 1, column - 1, playerNumber));
 			flag = !flag;
-		} while (board.validate(row - 1, column - 1) && !board.filled());
+		} while (!board.validate(row - 1, column - 1) && !board.filled());
+		if (board.filled()) System.out.println("Game Over - DRAW");
+		else System.out.println("Game Over - " + board.getPiece(row-1, column-1) + " Wins!!");
 		sc.close();
 	}
 	

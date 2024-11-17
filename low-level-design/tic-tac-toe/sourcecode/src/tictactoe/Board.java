@@ -7,14 +7,27 @@ public class Board {
 	private int[][] board;
 	private int filledSpaces;
 	
+	private int[] rowCount;
+	private int[] colCount;
+	private int diagonal;
+	private int antiDiagonal;
+	
 	public Board(int size) {
 		this.size = size;
 		board = new int[this.size][this.size];
 		this.filledSpaces = 0;
+		
+		this.colCount = new int[this.size];
+		this.rowCount = new int[this.size];
+		this.diagonal = 0;
+		this.antiDiagonal = 0;
 	}
 	
 	public int getSize() {
 		return this.size;
+	}
+	public int getPiece(int row, int col) {
+		return this.board[row][col];
 	}
 	public boolean filled() {
 		return this.filledSpaces == this.size * this.size;
@@ -38,6 +51,17 @@ public class Board {
 			System.out.println("not a valid position. choose position again");
 			return false;
 		} else {
+			if (playerNumber == 1) {
+				rowCount[row]++;
+				colCount[col]++;
+				if (row == col) diagonal++;
+				if (row + col == this.size) antiDiagonal++;
+			} else {
+				rowCount[row]--;
+				colCount[col]--;
+				if (row == col) diagonal--;
+				if (row + col == this.size) antiDiagonal--;
+			}
 			board[row][col] = playerNumber;
 			filledSpaces++;
 			return true;
@@ -52,40 +76,9 @@ public class Board {
 	}
 	
 	public boolean validate(int row, int col) {
-		boolean rowMatch = false, colMatch = false, upperDiagonal = false, lowerDiagonal = false;
-		
-		for (int i = 0; i < size; i++) {
-			if (i == col) continue;
-			if (board[row][i] != board[row][col]) {
-				rowMatch = true;
-				break;
-			}
-		}
-		
-		for (int i = 0; i < size; i++) {
-			if (i == row) continue;
-			if (board[i][col] != board[row][col]) {
-				colMatch = true;
-				break;
-			}
-		}
-		
-		for (int i = 0, j = 0; i < size && j < size; i++,j++) {
-			if (i == row && j == col) continue;
-			if (board[i][j] != board[row][col]) {
-				upperDiagonal = true;
-				break;
-			}
-		}
-		
-		for (int i = 0, j = size - 1; i < size && j >= 0; i++,j--) {
-			if (i == row && j == col) continue;
-			if (board[i][j] != board[row][col]) {
-				lowerDiagonal = true;
-				break;
-			}
-		}
-		
-		return rowMatch && colMatch && upperDiagonal && lowerDiagonal;
+		return rowCount[row] == this.size || rowCount[row] == -this.size 
+				|| colCount[col] == this.size || colCount[col] == -this.size 
+				|| diagonal == this.size || diagonal == -this.size
+				|| antiDiagonal == this.size || antiDiagonal == -this.size;
 	}
 }
