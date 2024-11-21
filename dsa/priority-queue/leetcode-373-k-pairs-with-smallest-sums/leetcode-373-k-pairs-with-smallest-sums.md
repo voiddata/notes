@@ -25,3 +25,10 @@ public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
     return ans;
 }
 ```
+
+
+## Optimal approach:
+
+below is the search space by either (0,+1) or (+1,0) in the (u,v) pairs
+
+![search space tree](./leetcode-k-pairs-with-smallest-sums.svg)
