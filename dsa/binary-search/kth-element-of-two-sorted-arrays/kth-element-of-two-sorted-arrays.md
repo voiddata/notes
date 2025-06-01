@@ -1,6 +1,7 @@
 [gfg](https://practice.geeksforgeeks.org/problems/k-th-element-of-two-sorted-array1317/1#)
 
 ## Approach 1:
+
 ```java
 public long kthElement( int arr1[], int arr2[], int n, int m, int k) {
     if(n > m) {
@@ -34,6 +35,7 @@ public long kthElement( int arr1[], int arr2[], int n, int m, int k) {
 ```
 
 ## Approach 2:
+
 ```java
 public long kthElement( int arr1[], int arr2[], int n, int m, int k) {
     if(n > m) {
