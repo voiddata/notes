@@ -42,7 +42,7 @@ public class ZigZagTraversalTest {
     }
 
     private static Arguments matrix_3X2_steps_5_obstacles_0() {
-        return Arguments.of(3, 2, 5, Set.of(), 2, 1);
+        return Arguments.of(3, 2, 5, Set.of(), 2, 0);
     }
 
     private static Arguments matrix_2X3_steps_5_obstacles_0() {

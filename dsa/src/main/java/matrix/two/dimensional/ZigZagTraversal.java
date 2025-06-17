@@ -14,9 +14,9 @@ public class ZigZagTraversal {
         int addend;
 
         outer:
-        for (i = 0; i < width; i++) {
+        for (i = 0; i < height; i++) {
             addend = flag ? +1 : -1;
-            while (j >= 0 && j < height) {
+            while (j >= 0 && j < width) {
                 if (!obstacles.contains(new AbstractMap.SimpleImmutableEntry<>(i, j))) {
                     if (currStep == totalPermittedSteps) break outer;
                     currStep++;
@@ -26,6 +26,6 @@ public class ZigZagTraversal {
             j -= addend;
             flag = !flag;
         }
-        return new AbstractMap.SimpleImmutableEntry<>(i >= width ? --i : i, j);
+        return new AbstractMap.SimpleImmutableEntry<>(i >= height ? --i : i, j);
     }
 }
