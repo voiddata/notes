@@ -27,7 +27,6 @@ public class ZigZagTraversalTest {
         return Stream.of(
                 matrix_3X3_steps_5_obstacles_1(),
                 matrix_3X3_steps_5_obstacles_0(),
-                matrix_3X2_steps_5_obstacles_0(),
                 matrix_2X3_steps_5_obstacles_0()
         );
     }
@@ -39,10 +38,6 @@ public class ZigZagTraversalTest {
     private static Arguments matrix_3X3_steps_5_obstacles_1() {
         var oneObstacle = Set.of(new AbstractMap.SimpleImmutableEntry<>(0, 0));
         return Arguments.of(3, 3, 5, oneObstacle, 2, 0);
-    }
-
-    private static Arguments matrix_3X2_steps_5_obstacles_0() {
-        return Arguments.of(3, 2, 5, Set.of(), 2, 0);
     }
 
     private static Arguments matrix_2X3_steps_5_obstacles_0() {

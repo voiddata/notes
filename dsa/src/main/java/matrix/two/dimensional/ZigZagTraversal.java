@@ -4,6 +4,8 @@ import java.util.AbstractMap;
 import java.util.Set;
 
 public class ZigZagTraversal {
+
+    // tag::usage[]
     public static AbstractMap.SimpleImmutableEntry<Integer, Integer> zigZagTraversalWithObstacles(
             int width, int height, int totalPermittedSteps, Set<AbstractMap.SimpleImmutableEntry<Integer, Integer>> obstacles) {
         int i;
@@ -28,4 +30,5 @@ public class ZigZagTraversal {
         }
         return new AbstractMap.SimpleImmutableEntry<>(i >= height ? --i : i, j);
     }
+    // end::usage[]
 }

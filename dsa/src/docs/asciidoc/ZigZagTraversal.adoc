@@ -1,0 +1,29 @@
+= ZigZagTraversal Java Class Documentation
+:toc:
+:source-highlighter: coderay
+
+== Overview
+
+The `ZigZagTraversal` class provides functionality to traverse a two-dimensional matrix in a zigzag pattern. This is useful for problems where elements need to be accessed in a diagonal or alternating order.
+
+== Usage
+
+[source,java]
+----
+include::../../main/java/matrix/two/dimensional/ZigZagTraversal.java[tag=usage]
+----
+
+== Methods
+
+=== `zigzagTraverse(int[][] matrix)`
+
+Traverses the given matrix in zigzag order and returns a list of elements.
+
+[source,java]
+----
+include::../../main/java/matrix/two/dimensional/ZigZagTraversal.java[tag=zigzagTraverse]
+----
+
+== Example
+
+[source,java]
