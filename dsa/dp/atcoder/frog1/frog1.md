@@ -105,3 +105,8 @@ private static int memoizedBruteforceRecursiveMinCost(int[] arr, int index, int[
 >this solution is time optimized and accepted. but there is an extra additional space being used.
 
 
+### Recurrence relation
+
+$$
+minCost(n) = min(|n - (n+1)| + minCost(n+1)), (|n - (n+2)| + minCost(n+2))
+$$

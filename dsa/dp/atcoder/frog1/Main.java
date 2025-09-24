@@ -43,6 +43,10 @@ public class Main {
 
     private static int memoizedBruteforceRecursiveMinCost(int[] arr, int index, int[] buffer) {
 
+        if (buffer[index] != -1) {
+            return buffer[index];
+        }
+
         int leftTreeMinCost = -1;
         if (index + 1 < arr.length) {
             if (buffer[index + 1] != -1) {
