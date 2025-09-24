@@ -108,5 +108,5 @@ private static int memoizedBruteforceRecursiveMinCost(int[] arr, int index, int[
 ### Recurrence relation
 
 $$
-minCost(n) = min(|n - (n+1)| + minCost(n+1)), (|n - (n+2)| + minCost(n+2))
+minCost(n) = min{(|n - (n+1)| + minCost(n+1)), (|n - (n+2)| + minCost(n+2))}
 $$
