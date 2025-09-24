@@ -113,9 +113,11 @@ private static int memoizedRecursiveMinCost(int[] arr, int index, int[] buffer) 
 ### Recurrence relation
 
 $$
+\begin{aligned}
 a = |n - (n+1)| + minCost(n+1) \\
 b = |n - (n+2)| + minCost(n+2) \\
 minCost(n) = min(a, b)
+\end{aligned}
 $$
 
 Since the above recurrence satisfies **optimal substructure**, this problem can be solved using dynamic programming.
