@@ -136,7 +136,7 @@ private static int tabulationIterativeMinCost(int[] arr) {
     int n = arr.length;
 
     // base cases
-    if (n == 1) return 0;
+    if (n <= 1) return 0;
     if (n == 2) return Math.abs(arr[0] - arr[1]);
 
     
