@@ -79,7 +79,7 @@ Instead of using multiple state variables, we can use only the current capacity 
 
 
 
-## Bruteforce Recursive Approach - With Memoization
+## Optimized Recursive Approach - With Memoization
 
 go through sample input 2 state tree
 we can see that if two items with same weight, can repeat the subtree recursion again.
@@ -114,9 +114,17 @@ private static long bruteForceKnapSackWithMemoization(int[][] arr, int W, int in
 
 
 <strong>
-One important take away is <br>
-I am not able to think of a optimized approach from the first bruteforce approach implemented. <br>
-So always think of a bruteforce solution with minimal variables being passed to the function. <br>
-From this able to think of a memoization approach.
+One important take away is  
+
 </strong>
+I am not able to think of a optimized approach from the first bruteforce approach implemented.  
+
+So always think of a bruteforce solution with minimal variables being passed to the function.  
+From this able to think of a memoization approach.
+
+
+### Intuition
+In the recursive memoized approach, the buffer table is being filled only for the necessary sub problems and not the complete buffer.
+
+
 

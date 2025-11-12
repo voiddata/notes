@@ -24,6 +24,10 @@ public class Main {
         // System.out.println(bruteForceKnapSack(arr, W, 0, 0, 0));
 
         System.out.println(bruteForceKnapSackWithMemoization(arr, W, 0, buffer));
+
+        for (int i = 0; i < buffer.length; i++) {
+            System.out.println(Arrays.toString(buffer[i]));
+        }
     }
 
     private static long bruteForceKnapSackWithoutExtraStates(int[][] arr, int W, int index) {
