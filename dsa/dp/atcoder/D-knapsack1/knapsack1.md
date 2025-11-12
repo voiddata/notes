@@ -116,7 +116,8 @@ private static long bruteForceKnapSackWithMemoization(int[][] arr, int W, int in
 <strong>
 One important take away is  
 
-</strong>
+</strong>  
+
 I am not able to think of a optimized approach from the first bruteforce approach implemented.  
 
 So always think of a bruteforce solution with minimal variables being passed to the function.  
