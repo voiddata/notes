@@ -16,18 +16,20 @@ public class Main {
 
         long[][] buffer = new long[n][W+1];
 
-        for (long[] row : buffer) {
-            Arrays.fill(row, -1);
-        }
+        // for (long[] row : buffer) {
+        //     Arrays.fill(row, -1);
+        // }
 
         // System.out.println(bruteForceKnapSackWithoutExtraStates(arr, W, 0));
         // System.out.println(bruteForceKnapSack(arr, W, 0, 0, 0));
 
-        System.out.println(bruteForceKnapSackWithMemoization(arr, W, 0, buffer));
+        // System.out.println(bruteForceKnapSackWithMemoization(arr, W, 0, buffer));
 
-        for (int i = 0; i < buffer.length; i++) {
-            System.out.println(Arrays.toString(buffer[i]));
-        }
+        System.out.println(iterativeTopDown(arr, W, buffer));
+
+        // for (int i = 0; i < buffer.length; i++) {
+        //     System.out.println(Arrays.toString(buffer[i]));
+        // }
     }
 
     private static long bruteForceKnapSackWithoutExtraStates(int[][] arr, int W, int index) {
@@ -80,5 +82,28 @@ public class Main {
 
         buffer[index][W] = Math.max(take, leave);
         return buffer[index][W];
+    }
+
+    private static long iterativeTopDown(int[][] arr, int W, long[][] buffer) {
+
+        for (int i = arr[0][0]; i <= W; i++) {
+            buffer[0][i] = arr[0][1];
+        }
+        
+        for (int i = 1; i < arr.length; i++) {
+            for (int j = 1; j <= W; j++) {
+                long leave = 0 + buffer[i-1][j];
+                long take = Integer.MIN_VALUE;
+
+                if (arr[i][0] <= j) {
+                    take = arr[i][1] + buffer[i-1][j - arr[i][0]];
+                }
+
+                buffer[i][j] = Math.max(take, leave);        
+            }
+        }
+
+        
+        return buffer[arr.length-1][W];
     }
 }

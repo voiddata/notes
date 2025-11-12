@@ -129,3 +129,32 @@ In the recursive memoized approach, the buffer table is being filled only for th
 
 
 
+## Optimized Iterative Approach - Bottom Up
+
+To arrive with this solution we need to think of this in a tabular fashion and bottom up
+Solve the basic subproblems first and then use those results to arrive at the final result.
+
+```java
+private static long iterativeTopDown(int[][] arr, int W, long[][] buffer) {
+
+    // this is required to initialize the first row if only one item is chosen
+    for (int i = arr[0][0]; i <= W; i++) {
+        buffer[0][i] = arr[0][1];
+    }
+    
+    for (int i = 1; i < arr.length; i++) {
+        for (int j = 1; j <= W; j++) {
+            long leave = 0 + buffer[i-1][j];
+            long take = Integer.MIN_VALUE;
+
+            if (arr[i][0] <= j) {
+                take = arr[i][1] + buffer[i-1][j - arr[i][0]];
+            }
+
+            buffer[i][j] = Math.max(take, leave);        
+        }
+    }
+
+    return buffer[arr.length-1][W];
+}
+```
