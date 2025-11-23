@@ -91,12 +91,17 @@ public class Main {
         }
         
         for (int i = 1; i < arr.length; i++) {
+            // for each bucket weight from 1 to W
             for (int j = 1; j <= W; j++) {
                 long leave = 0 + buffer[i-1][j];
                 long take = Integer.MIN_VALUE;
 
+                // if and only if the weight of the current item is lesser than the bucket weight
                 if (arr[i][0] <= j) {
-                    take = arr[i][1] + buffer[i-1][j - arr[i][0]];
+
+                    int valueOfCurrentItem = arr[i][1];
+                    long maxValueIfCurrentItemConsidered = buffer[i-1][j - arr[i][0]];
+                    take = valueOfCurrentItem + maxValueIfCurrentItemConsidered;
                 }
 
                 buffer[i][j] = Math.max(take, leave);        
